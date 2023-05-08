@@ -1,0 +1,7 @@
+{
+  "name": "sprint4-ionic",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

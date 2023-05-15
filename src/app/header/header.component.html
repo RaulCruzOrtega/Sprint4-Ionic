@@ -1,0 +1,29 @@
+<header>
+  <img 
+  id="desplegable"
+  src="https://firebasestorage.googleapis.com/v0/b/proyecto-clinica-estetic-93780.appspot.com/o/threebars_106419.png?alt=media&token=92825721-f704-4b15-a28f-6bf9d9bf8f21" 
+  alt=""
+  (click)="desplegar()"
+  >
+  <a>
+    <img
+        id="logo"
+        src="https://firebasestorage.googleapis.com/v0/b/proyecto-clinica-estetic-93780.appspot.com/o/LMR_logo.png?alt=media&token=7b878943-5c57-4004-abe6-a2e0ba00994d"
+        alt="Logo Clinica Estetica"
+    >
+  </a>
+  <a (click)="iconousuario()"  id="user_img">
+    <img
+      class="user_img"
+      src="https://firebasestorage.googleapis.com/v0/b/proyecto-clinica-estetic-93780.appspot.com/o/user_icon1.png?alt=media&token=048fc7af-9436-4da2-abee-633719ec43db"
+    >
+  </a>
+</header>
+<nav [ngStyle]="aparece ? { 'display': 'block'} :  { 'display': 'none'}" class="bar_nav">
+  <ul>
+    <li><a [routerLink]="['/treatments']">Tratamientos</a></li>
+    <li><a [routerLink]="['/promotions']">Promociones</a></li>
+    <li><a [routerLink]="['/aboutUs']">Nosotros</a></li>
+    <li><a [routerLink]="['/contactUs']">Contacto</a></li>
+  </ul>
+</nav>

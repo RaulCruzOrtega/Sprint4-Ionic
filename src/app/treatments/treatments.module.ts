@@ -6,8 +6,6 @@ import { IonicModule } from '@ionic/angular';
 
 import { TreatmentsPageRoutingModule } from './treatments-routing.module';
 
-import { TreatmentsPage } from './treatments.page';
-
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +13,6 @@ import { TreatmentsPage } from './treatments.page';
     IonicModule,
     TreatmentsPageRoutingModule
   ],
-  declarations: [TreatmentsPage]
+  declarations: []
 })
 export class TreatmentsPageModule {}

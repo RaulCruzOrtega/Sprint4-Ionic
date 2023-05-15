@@ -1,11 +1,10 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>treatments</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <p *ngFor="let treatment_element of treatments | async"> 
-    {{treatment_element.name}} 
-  </p>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <section class="grid">
+    <app-image-card *ngFor="let treatment_element of treatments | async" 
+    [img]="treatment_element.image"
+    [name]="treatment_element.name"
+    [linkroute]="['/treatment',treatment_element.id]">
+        
+    </app-image-card>
+  </section>
 </ion-content>

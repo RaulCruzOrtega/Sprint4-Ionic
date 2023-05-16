@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Treatment } from '../interfaces/treatment.interface';
-import { DatabaseService } from '../services/database.service';
+import { Treatment } from '../../interfaces/treatment.interface';
+import { DatabaseService } from '../../services/database.service';
 
 @Component({
   selector: 'app-treatments',

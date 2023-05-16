@@ -5,14 +5,17 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { TreatmentsPageRoutingModule } from './treatments-routing.module';
+import { TreatmentsPage } from './treatments.page';
+import { ImageCardComponent } from 'src/app/Components/image-card/image-card.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TreatmentsPageRoutingModule
+    TreatmentsPageRoutingModule,
+    ImageCardComponent
   ],
-  declarations: []
+  declarations: [TreatmentsPage]
 })
 export class TreatmentsPageModule {}

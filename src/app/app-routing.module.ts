@@ -9,8 +9,13 @@ const routes: Routes = [
   },
   {
     path: 'treatments',
-    loadChildren: () => import('./treatments/treatments.module').then( m => m.TreatmentsPageModule)
+    loadChildren: () => import('./Pages/treatments/treatments.module').then( m => m.TreatmentsPageModule)
   },
+  {
+    path: 'treatment/:name',
+    loadChildren: () => import('./Pages/treatment/treatment.module').then( m => m.TreatmentPageModule)
+  },
+
 
 ];
 

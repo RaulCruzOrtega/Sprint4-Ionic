@@ -46,7 +46,7 @@
     margin-right: -75px;
     margin-top: 1em;
     margin-left: 25px;
-    visibility: hidden;
+    visibility: visible;
   }
   
   #logo {
@@ -630,6 +630,9 @@
   /* Media Queries */
   /* Extra Small Devices and Phones */
   @media only screen and (max-width: 319px) {
+    #desplegable{
+      visibility: visible;
+    }
   
     /* Grid */
     .grid {
@@ -653,9 +656,7 @@
     }
   
     /* Header and logo */
-    header {
-      text-align: left;
-    }
+    
   
     #logo {
       height: 3.5em;
@@ -811,6 +812,9 @@
   
   /*Small Devices and Phones */
   @media only screen and (min-width: 320px) and (max-width: 480px) {
+    #desplegable{
+      visibility: visible;
+    }
   
     /* Grid */
     .grid {
@@ -959,10 +963,6 @@
     /* Desplegable */
     #desplegable{
         visibility: visible;
-    }
-
-    .bar_nav {
-        display: none;
     }
 
     /* Title */

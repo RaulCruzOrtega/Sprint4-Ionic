@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { Treatment } from 'src/app/interfaces/treatment.interface';
+import { DatabaseService } from 'src/app/services/database.service';
 
 @Component({
   selector: 'app-treatment',
@@ -7,9 +11,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TreatmentPage implements OnInit {
 
-  constructor() { }
+  treatment!: Treatment;
+  suscription!: Subscription;
+  aparecer = false;
 
-  ngOnInit() {
+  constructor(private router: Router, private databaseService: DatabaseService){}
+
+  async ngOnInit(){
+    this.suscription = await this.databaseService.getTreatment(this.router.url.split("/")[2])
+    .subscribe(treatment => {
+      this.treatment = treatment;
+      if (this.treatment == null || this.treatment == undefined){
+        this.router.navigate(['/treatments']);
+      }
+      this.aparecer = true;
+    });
+  }
+
+  ngOnDestroy(): void {
+      this.suscription.unsubscribe();
   }
 
 }

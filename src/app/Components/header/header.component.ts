@@ -16,6 +16,7 @@ export class HeaderComponent  implements OnInit {
   }
 
   iconousuario(){
+    this.router.navigate(['/user-login']) //temporalmente
   //   if(this.authUser.currentUser() == null){
   //     this.router.navigate(['user-login'])
   //   }

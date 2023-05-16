@@ -14,7 +14,11 @@ const routes: Routes = [
   {
     path: 'treatment/:name',
     loadChildren: () => import('./Pages/treatment/treatment.module').then( m => m.TreatmentPageModule)
+  },  {
+    path: 'user-login',
+    loadChildren: () => import('./Pages/user-login/user-login.module').then( m => m.UserLoginPageModule)
   },
+
 
 
 ];

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Firestore, addDoc, collection, collectionData, doc, docData } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, collectionData, doc, query, where, docData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Treatment } from '../interfaces/treatment.interface';
 import { User } from 'src/app/interfaces/user.interface';
+import { Contact } from '../interfaces/contact.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -30,4 +31,20 @@ export class DatabaseService {
     const userRef = collection(this.firebase, 'users');
     return addDoc(userRef, User);
   }
+
+  getUserwithEmail(email:string): Observable<User[]>{
+    const q = query(collection(this.firebase, 'users'), where('userEmail','==', email));
+    return collectionData(q, { idField: 'id' }) as Observable<User[]>;
+  }
+
+  getInfoCards(): Observable<any[]> {
+    const infoCardRef = collection(this.firebase, 'contactUs');
+    return collectionData(infoCardRef, { idField: 'id' });
+  }
+
+  addContactMessage(Message: Contact) {
+    const reviewRef = collection(this.firebase, 'contactMessages');
+    return addDoc(reviewRef, Message);
+  }
+
 }

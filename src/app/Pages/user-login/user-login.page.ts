@@ -54,6 +54,8 @@ export class UserLoginPage implements OnInit {
   login(email: string, password: string) {
     this.userAuth.login(email, password).then(
       (res) => {
+        this.loginForm.controls['userEmail'].setValue("");
+        this.loginForm.controls['password'].setValue("");
         this.router.navigate(['/user-profile']);
         console.log("Sesión iniciada")
       },
@@ -71,7 +73,7 @@ export class UserLoginPage implements OnInit {
       await this.userValidation();
       if (this.exist) {
         this.login(
-          this.loginForm.value.userEmail,
+          this.loginForm.value.userEmail.toLowerCase(),
           this.loginForm.value.password
         );
       }

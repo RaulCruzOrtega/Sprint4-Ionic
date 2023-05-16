@@ -100,7 +100,7 @@ export class UserRegisterPage implements OnInit {
       const NuevoUsuario: User = {
         userImage: "",
         userName: this.singupForm.value.userName,
-        userEmail: this.singupForm.value.userEmail,
+        userEmail: this.singupForm.value.userEmail.toLowerCase(),
         phoneNumber: this.singupForm.value.phoneNumber,
         userDNI: this.singupForm.value.userDNI,
         Alergias: ""

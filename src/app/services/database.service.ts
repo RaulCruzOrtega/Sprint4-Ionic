@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, addDoc, collection, collectionData, doc, query, where, docData } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, collectionData, doc, query, where, docData, updateDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Treatment } from '../interfaces/treatment.interface';
 import { User } from 'src/app/interfaces/user.interface';
@@ -45,6 +45,16 @@ export class DatabaseService {
   addContactMessage(Message: Contact) {
     const reviewRef = collection(this.firebase, 'contactMessages');
     return addDoc(reviewRef, Message);
+  }
+
+  updateAllergiesInformation(idUser: string, information: string){
+    const docRef = doc(this.firebase, `users/${idUser}`);
+    updateDoc(docRef, {Alergias: information});
+  }
+
+  updateImageUser(idUser: string, fullpat: string){
+    const docRef = doc(this.firebase, `users/${idUser}`);
+    updateDoc(docRef, {userImage: fullpat});
   }
 
 }

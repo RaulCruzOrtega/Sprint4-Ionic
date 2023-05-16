@@ -22,9 +22,7 @@ export class HeaderComponent  implements OnInit {
       this.router.navigate(['user-login'])
     }
     else{
-      // this.router.navigate(['user-profile']) 
-      alert("Sesión Iniciada")
-      this.authUser.logout();
+      this.router.navigate(['user-profile'])
     }
   }
 

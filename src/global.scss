@@ -13,10 +13,10 @@
 @import "@ionic/angular/css/core.css";
 
 /* Basic CSS for apps built with Ionic */
-@import "@ionic/angular/css/normalize.css";
-@import "@ionic/angular/css/structure.css";
-@import "@ionic/angular/css/typography.css";
-@import '@ionic/angular/css/display.css';
+// @import "@ionic/angular/css/normalize.css";
+// @import "@ionic/angular/css/structure.css";
+// @import "@ionic/angular/css/typography.css";
+// @import '@ionic/angular/css/display.css';
 
 /* Optional CSS utils that can be commented out */
 @import "@ionic/angular/css/padding.css";
@@ -190,7 +190,7 @@
   
   /* Body styles*/
   body {
-    background-color: #f9f7f2;
+    background-color: #f9f7f2 !important;
   }
   
   p {
@@ -464,7 +464,7 @@
   .logIn input[type="submit"] {
     background-color: #4CAF50;
     color: #fff;
-    font-size: 16px;
+    font-size: 1em !important;
     padding: 10px;
     border-radius: 5px;
     border: none;
@@ -766,7 +766,7 @@
     .logIn input[type="submit"] {
       width: 80%;
       margin-left: 10%;
-      font-size: 1em;
+      font-size: 1em !important;
     }
   
     .logIn h5 {

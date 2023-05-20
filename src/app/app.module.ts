@@ -12,7 +12,6 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideStorage, getStorage } from '@angular/fire/storage';
 import { HeaderComponent } from './Components/header/header.component';
-
 @NgModule({
   declarations: [
     AppComponent,

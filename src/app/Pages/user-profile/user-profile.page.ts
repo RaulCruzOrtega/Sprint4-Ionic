@@ -58,7 +58,7 @@ export class UserProfilePage implements OnInit {
   }
 
   pedirCita(){
-    this.router.navigate(['contactUs'])
+    this.router.navigate(['contact-us'])
   }
 
   uploadImageUser(event: any){

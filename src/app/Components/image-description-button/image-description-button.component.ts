@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [
     RouterModule
-  ]
+  ],
 })
 export class ImageDescriptionButtonComponent  implements OnInit {
   @Input() image!: string;

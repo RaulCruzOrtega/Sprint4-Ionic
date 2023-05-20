@@ -10,10 +10,19 @@ import { AutenticacionUserService } from 'src/app/services/autenticacion-user.se
 export class HeaderComponent  implements OnInit {
 
   aparece = true;
+  registrado = false;
 
   constructor(private router: Router, private authUser: AutenticacionUserService) { }
 
   ngOnInit(): void {
+    this.authUser.estadousuario().subscribe(async userstate => {
+      if (userstate != null){
+        this.registrado = true
+      }
+      else{
+        this.registrado = false
+      }
+    })
   }
 
   iconousuario(){

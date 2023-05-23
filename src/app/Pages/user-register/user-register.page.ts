@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, first } from 'rxjs';
 import { User } from 'src/app/interfaces/user.interface';
 import { AutenticacionUserService } from 'src/app/services/autenticacion-user.service';
 import { DatabaseService } from 'src/app/services/database.service';
+import { SQLite } from '@awesome-cordova-plugins/sqlite/ngx';
+import { SqliteService } from 'src/app/services/sqlite.service';
 
 @Component({
   selector: 'app-user-register',
@@ -22,7 +24,12 @@ export class UserRegisterPage implements OnInit {
   
    suscripcionUsuarios!: Subscription
   
-   constructor (private builder: FormBuilder, private database: DatabaseService, private router: Router, private userAuth: AutenticacionUserService) { }
+   constructor (private builder: FormBuilder, 
+    private database: DatabaseService, 
+    private router: Router, 
+    private userAuth: AutenticacionUserService,
+    private sqliteService: SqliteService
+    ) { }
   
    async ngOnInit(){
     this.singupForm = this.initForm()
@@ -107,6 +114,16 @@ export class UserRegisterPage implements OnInit {
       }
       const responseAuth = await this.userAuth.registerUser(this.singupForm.value.userEmail, this.singupForm.value.password)
       const response = await this.database.addUser(NuevoUsuario);
+      this.database.getUserwithEmail(this.singupForm.value.userEmail).pipe(first()).subscribe(usuario => {
+        if (usuario != undefined){
+          try {
+            this.sqliteService.createTable(usuario[0].id!);
+            console.log('Tabla de datos del Usuario Creada');
+          } catch (error) {
+            console.error('Error al inicializar la tabla de datos:', error);
+          }
+        }
+      })
       this.router.navigate(['/treatments']);
       }
     }

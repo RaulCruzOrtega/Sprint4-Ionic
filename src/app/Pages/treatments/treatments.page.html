@@ -3,7 +3,8 @@
     <app-image-card *ngFor="let treatment_element of treatments | async" 
     [img]="treatment_element.image"
     [name]="treatment_element.name"
-    [linkroute]="['/treatment',treatment_element.id]">
+    [linkroute]="['/treatment',treatment_element.id]"
+    [treatment_id]="treatment_element.id!">
         
     </app-image-card>
   </section>

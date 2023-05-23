@@ -22,9 +22,12 @@
   </header>
   <nav [ngStyle]="aparece ? { 'display': 'block'} :  { 'display': 'none'}" class="bar_nav">
     <ul>
-      <li><a [routerLink]="['/treatments']">Tratamientos</a></li>
-      <li *ngIf="registrado"><a [routerLink]="['/contact-us']">Favoritos</a></li>
-      <li><a [routerLink]="['/contact-us']">Contacto</a></li>
+      <li>
+        <a [routerLink]="['/treatments']">Tratamientos</a></li>
+      <li *ngIf="registrado">
+        <a [routerLink]="['/user-favourites']">Favoritos</a></li>
+      <li>
+        <a [routerLink]="['/contact-us']">Contacto</a></li>
     </ul>
   </nav>
 </ion-header>

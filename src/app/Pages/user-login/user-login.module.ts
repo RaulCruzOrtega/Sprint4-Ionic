@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SQLite } from '@awesome-cordova-plugins/sqlite/ngx';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -16,6 +17,7 @@ import { UserLoginPage } from './user-login.page';
     IonicModule,
     UserLoginPageRoutingModule
   ],
-  declarations: [UserLoginPage]
+  declarations: [UserLoginPage],
+  providers: [SQLite],
 })
 export class UserLoginPageModule {}

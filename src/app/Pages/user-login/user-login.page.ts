@@ -3,6 +3,10 @@ import { FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } 
 import { DatabaseService } from '../../services/database.service';
 import { Router } from '@angular/router';
 import { AutenticacionUserService } from '../../services/autenticacion-user.service';
+import { SQLite } from '@awesome-cordova-plugins/sqlite/ngx';
+import { SqliteService } from 'src/app/services/sqlite.service';
+import { User } from '../../interfaces/user.interface';
+import { first } from 'rxjs';
 
 @Component({
   selector: 'app-user-login',
@@ -15,12 +19,14 @@ export class UserLoginPage implements OnInit {
   aparecenErrores = false;
   exist: boolean = true;
   userError: string = '';
+  userId!: string;
 
   constructor(
     private builder: FormBuilder,
     private database: DatabaseService,
     private router: Router,
-    private userAuth: AutenticacionUserService
+    private userAuth: AutenticacionUserService,
+    private sqliteService: SqliteService
   ) { }
 
   ngOnInit(): void {
@@ -66,12 +72,32 @@ export class UserLoginPage implements OnInit {
     );
   }
 
+  getUserId(userEmail: string) {
+    
+  }
+
   async onSubmit() {
     this.exist = true;
     this.aparecenErrores = true;
     if (this.loginForm.valid) {
       await this.userValidation();
       if (this.exist) {
+
+        this.database.getUserwithEmail(this.loginForm.value.userEmail).pipe(first()).subscribe(
+          (user: User[]) => {
+           try {
+            console.log(user[0].id)
+            this.sqliteService.createTable(user[0].id!);
+            console.log('Tabla de datos del Usuario Creada');
+            // Aquí puedes llamar a otros métodos del servicio
+            } catch (error) {
+              console.error('Error al inicializar la tabla de datos:', error);
+            }
+          }
+        );
+
+        
+
         this.login(
           this.loginForm.value.userEmail.toLowerCase(),
           this.loginForm.value.password

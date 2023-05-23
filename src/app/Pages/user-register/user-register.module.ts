@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { UserRegisterPageRoutingModule } from './user-register-routing.module';
 
 import { UserRegisterPage } from './user-register.page';
+import { SQLite } from '@awesome-cordova-plugins/sqlite/ngx';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { UserRegisterPage } from './user-register.page';
     IonicModule,
     UserRegisterPageRoutingModule
   ],
-  declarations: [UserRegisterPage]
+  declarations: [UserRegisterPage],
+  providers: [SQLite],
 })
 export class UserRegisterPageModule {}

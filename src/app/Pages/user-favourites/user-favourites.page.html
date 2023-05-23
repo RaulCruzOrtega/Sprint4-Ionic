@@ -1,0 +1,10 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  <section class="grid">
+    <app-image-card *ngFor="let treatment_element of fav_treatments" 
+    [img]="treatment_element.image"
+    [name]="treatment_element.name"
+    [linkroute]="['/treatment',treatment_element.id]"> 
+        
+  </app-image-card>
+  </section>
+</ion-content>

@@ -19,7 +19,7 @@ export class DatabaseService {
 
   getTreatment(id:string): Observable<Treatment>{
     const docRef = doc(this.firebase, `treatments/${id}`);
-    return docData(docRef) as Observable<Treatment>;
+    return docData(docRef, {idField: 'id'}) as Observable<Treatment>;
   }
 
   getUsers(): Observable<User[]> {

@@ -23,19 +23,25 @@ export class UserFavouritesPage implements OnInit {
   }
 
   ionViewWillEnter(){
+    this.cargarFavoritos();
+  }
+
+  refrescar(event: boolean){
+    this.cargarFavoritos();
+  }
+
+  cargarFavoritos(){
     this.fav_treatments = [];
     let suscibe_Auth = this.usuario.estadousuario().subscribe( user => {
-      console.log(user)
+      //console.log(user)
       if (user != null){
         let suscibe_UserInf = this.database.getUserwithEmail(user!.email!).subscribe( userInfo => {
-          console.log(userInfo)
+          //console.log(userInfo)
           this.sqliteService.getFavorites(userInfo[0].id!).then( favoritos => { 
-            console.log(favoritos)
+            //console.log(favoritos)
             for (let favid of favoritos){ 
               let suscibe_treat = this.database.getTreatment(favid).subscribe(treatment => {
-                console.log(treatment)
                 this.fav_treatments.push(treatment!)
-                // console.log(this.fav_treatments)
                 suscibe_treat.unsubscribe()
               })
            }

@@ -15,7 +15,10 @@ export class TreatmentsPage implements OnInit {
   constructor(private database: DatabaseService) { }
 
   ngOnInit() {
-    this.treatments = this.database.getTreatments();
   }
 
+  ionViewWillEnter(){
+    this.treatments = this.database.getTreatments();
+  }
+  
 }

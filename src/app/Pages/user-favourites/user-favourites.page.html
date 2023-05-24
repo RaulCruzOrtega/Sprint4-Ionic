@@ -3,7 +3,9 @@
     <app-image-card *ngFor="let treatment_element of fav_treatments" 
     [img]="treatment_element.image"
     [name]="treatment_element.name"
-    [linkroute]="['/treatment',treatment_element.id]"> 
+    [linkroute]="['/treatment',treatment_element.id]"
+    [treatment_id]="treatment_element.id!"
+    (tratamientoModificado)="refrescar($event)"> 
         
   </app-image-card>
   </section>

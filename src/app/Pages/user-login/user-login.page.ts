@@ -95,9 +95,6 @@ export class UserLoginPage implements OnInit {
             }
           }
         );
-
-        
-
         this.login(
           this.loginForm.value.userEmail.toLowerCase(),
           this.loginForm.value.password

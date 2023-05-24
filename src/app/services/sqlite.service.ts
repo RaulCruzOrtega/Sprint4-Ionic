@@ -80,4 +80,18 @@ async createSqliteBase() {
       });
   }
 
+  //EXISTE UN TRATAMIENTO EN LA TABLA
+  ExistFavorites(userId: string, treatmentid: string): Promise<boolean> {
+    return this.db.executeSql(`SELECT * FROM "${userId}" WHERE treatments = "${treatmentid}"`, [])
+      .then((res) => {
+        if (res.rows.length == 1) {
+          return true;
+        }
+        return false;
+      })
+      .catch((error) => {
+        console.error('Error al leer el favorito:', error);
+        return false;
+      });
+  }
 }
